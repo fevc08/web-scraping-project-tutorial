@@ -19,9 +19,7 @@ tables = page_soup.find('div', {'id': 'style-1'})  # find all the tables
 
 data = []
 for row in tables.find_all('tr'):
-    row_data = []
-    for cell in row.find_all('td'):
-        row_data.append(cell.text)
+    row_data = [cell.text for cell in row.find_all('td')]
     data.append(row_data)
 
 df = pd.DataFrame(data, columns=['Date', 'Revenue'])  # create the dataframe
